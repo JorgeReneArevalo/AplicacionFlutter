@@ -6,26 +6,27 @@ import 'package:disenios_app/ui/widgets/dots_widget.dart';
 import 'package:disenios_app/ui/widgets/slide_widget.dart';
 import 'package:flutter/material.dart';
 
-class DisenioUnoPage extends StatefulWidget {
-  DisenioUnoPage({Key? key}) : super(key: key);
+class DisenioUnoPageLogica extends StatefulWidget {
+  DisenioUnoPageLogica({Key? key}) : super(key: key);
 
   @override
-  _DisenioUnoPageState createState() => _DisenioUnoPageState();
+  _DisenioUnoPageLogica createState() => _DisenioUnoPageLogica();
 }
 
-int currentPage = 0;
-
-class _DisenioUnoPageState extends State<DisenioUnoPage> {
-  final controlador = PageController();
+class _DisenioUnoPageLogica extends State<DisenioUnoPageLogica> {
+  int currentPage = 0;
   //late in currentPage;
 
   //@override
   //Void iniState(){
   // currentPage = 0;
-  // super
+  // super.iniState();
   //}
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    print(size);
+    //return SafeArea(
     return Scaffold(
         backgroundColor: Colors.white,
         body: Column(
@@ -46,10 +47,10 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
               ),
             ),
             Container(
-              height: 600,
+              //height: 600,
+              height: size.height * 0.7,
               //color: Colors.blue,
               child: PageView.builder(
-                controller: controlador,
                 onPageChanged: (valor) {
                   currentPage = valor;
                   setState(() {});
@@ -70,9 +71,7 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
             ),
             currentPage != slides.length - 1
                 ? FloatingActionButton(
-                    onPressed: () {
-                      controlador.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-                    },
+                    onPressed: () {},
                     backgroundColor: DisenioUnoColores.colorUno,
                     child: Icon(
                       Icons.chevron_right,
@@ -84,9 +83,7 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
                         primary: DisenioUnoColores.colorUno,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50))),
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
                         vertical: 12,
@@ -100,5 +97,6 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
                   ),
           ],
         ));
+    //);
   }
 }

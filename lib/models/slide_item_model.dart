@@ -49,5 +49,10 @@ List<SlideItemModel> slides = [
     imagen: 'assets/disenio_uno/undraw_Hang_out_re_udl4.png',
     index: 2,
   ),
+    SlideItemModel(
+    titulo: 'Frase de la imagen cuatro',
+    imagen: 'assets/disenio_uno/undraw_version_control_re_mg66.png',
+    index: 3,
+  ),
 
 ];
