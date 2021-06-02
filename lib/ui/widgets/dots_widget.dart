@@ -15,12 +15,12 @@ class DotsWidget extends StatelessWidget {
           (e) => Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: Container(
-              width: e.index == currentPage ? 45 : 15,
+              width: e.id == currentPage ? 45 : 15,
               height: 15,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   //color: Colors.grey.withOpacity(.4),
-                  color: e.index == currentPage ? DisenioUnoColores.colorTres : Colors.grey.withOpacity(.4)
+                  color: e.id == currentPage ? DisenioUnoColores.colorTres : Colors.grey.withOpacity(.4)
                   ),
             ),
           ),

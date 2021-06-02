@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:disenios_app/models/slide_item_model.dart';
 import 'package:disenios_app/ui/utils/colores.dart';
 import 'package:disenios_app/ui/widgets/dots_widget.dart';
@@ -22,7 +20,8 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
   //@override
   //Void iniState(){
   // currentPage = 0;
-  // super
+  // super.iniState();
+  // SlideService.getSlides();
   //}
   @override
   Widget build(BuildContext context) {
