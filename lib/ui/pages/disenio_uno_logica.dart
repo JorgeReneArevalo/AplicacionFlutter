@@ -56,9 +56,9 @@ class _DisenioUnoPageLogica extends State<DisenioUnoPageLogica> {
                   setState(() {});
                 },
                 itemBuilder: (_, index) => SlideWidget(
-                  slide: slides[index],
+                  slide: paginas[index],
                 ),
-                itemCount: slides.length,
+                itemCount: paginas.length,
               ),
             ),
           ],
@@ -67,9 +67,10 @@ class _DisenioUnoPageLogica extends State<DisenioUnoPageLogica> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DotsWidget(
+              slides: paginas,
               currentPage: currentPage,
             ),
-            currentPage != slides.length - 1
+            currentPage != paginas.length - 1
                 ? FloatingActionButton(
                     onPressed: () {},
                     backgroundColor: DisenioUnoColores.colorUno,

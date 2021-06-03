@@ -13,19 +13,19 @@ String slideResponseModelToJson(SlideResponseModel data) => json.encode(data.toJ
 class SlideResponseModel {
     SlideResponseModel({
        required this.ok,
-       required this.paginas,
+       required this.slides,
     });
 
     bool ok;
-    List<SlideItemModel> paginas;
+    List<SlideItemModel> slides;
 
     factory SlideResponseModel.fromJson(Map<String, dynamic> json) => SlideResponseModel(
         ok: json["ok"],
-        paginas: List<SlideItemModel>.from(json["paginas"].map((x) => SlideItemModel.fromJson(x))),
+        slides: List<SlideItemModel>.from(json["slides"].map((x) => SlideItemModel.fromJson(x))),
     );
 
     Map<String, dynamic> toJson() => {
         "ok": ok,
-        "paginas": List<dynamic>.from(paginas.map((x) => x.toJson())),
+        "slides": List<dynamic>.from(slides.map((x) => x.toJson())),
     };
 }

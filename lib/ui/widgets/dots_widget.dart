@@ -6,9 +6,11 @@ class DotsWidget extends StatelessWidget {
   const DotsWidget({
     Key? key,
     required this.currentPage,
+    required this.slides,
   }) : super(key: key);
 
   final int currentPage;
+  final List<SlideItemModel> slides;
   List<Widget> dibujarPuntos() {
     return slides
         .map(

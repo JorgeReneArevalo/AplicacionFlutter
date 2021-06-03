@@ -23,17 +23,17 @@ class SlideItemModel {
   factory SlideItemModel.fromJson(Map<String, dynamic> json) => SlideItemModel(
         titulo: json["titulo"],
         imagen: json["imagen"],
-        id: json["index"],
+        id: json["id"],
       );
 
   Map<String, dynamic> toJson() => {
         "titulo": titulo,
         "imagen": imagen,
-        "index": id,
+        "id": id,
       };
 }
 
-List<SlideItemModel> slides = [
+List<SlideItemModel> paginas = [
   SlideItemModel(
     titulo: 'Frase de la imagen uno',
     imagen: 'assets/disenio_uno/undraw_version_control_re_mg66.png',
