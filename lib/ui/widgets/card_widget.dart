@@ -1,17 +1,21 @@
-
+import 'package:disenios_app/models/card_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 class CarWidget extends StatelessWidget {
-  const CarWidget({
-    Key? key,
-    //required this.size,
-  }) : super(key: key);
+  const CarWidget(
+      {Key? key,
+      //required this.size,
+      required this.tarjeta})
+      : super(key: key);
 
   //final Size size;
 
+  final CardModel tarjeta;
   @override
   Widget build(BuildContext context) {
+    final esInternet = tarjeta.imagen.contains('http');
     final size = MediaQuery.of(context).size;
     return Padding(
       padding: const EdgeInsets.only(bottom: 15),
@@ -28,10 +32,17 @@ class CarWidget extends StatelessWidget {
               child: ClipRRect(
                 //borderRadius: BorderRadis.circular(50),
                 borderRadius: BorderRadius.circular(50),
-                child: Image.network(
-                  'https://i.pinimg.com/736x/16/cc/37/16cc376e6a132210f01576b927e9c661.jpg',
-                  fit: BoxFit.cover,
-                ),
+                child: esInternet
+                    ? Image.network(
+                        tarjeta.imagen,
+                        fit: BoxFit.cover,
+                      )
+                    : Image.file(
+                        File(
+                          tarjeta.imagen,
+                        ),
+                        fit: BoxFit.cover,
+                      ),
               ),
             ),
             Positioned(
