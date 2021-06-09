@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:disenios_app/models/slide_item_model.dart';
 import 'package:disenios_app/ui/utils/colores.dart';
@@ -53,7 +52,7 @@ class _DisenioUnoPageLogica extends State<DisenioUnoPageLogica> {
               child: PageView.builder(
                 onPageChanged: (valor) {
                   currentPage = valor;
-                  setState(() {});
+                  //setState(() {});
                 },
                 itemBuilder: (_, index) => SlideWidget(
                   slide: paginas[index],
@@ -67,8 +66,8 @@ class _DisenioUnoPageLogica extends State<DisenioUnoPageLogica> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             DotsWidget(
-              slides: paginas,
-              currentPage: currentPage,
+              //slides: paginas,
+              //currentPage: currentPage,
             ),
             currentPage != paginas.length - 1
                 ? FloatingActionButton(

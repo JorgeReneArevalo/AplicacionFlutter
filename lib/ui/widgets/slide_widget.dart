@@ -12,6 +12,7 @@ class SlideWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final esInternet = slide.imagen.contains('http');
     return Column(
       children: [
         // Padding(
@@ -24,12 +25,14 @@ class SlideWidget extends StatelessWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Image.asset(
-              slide.imagen,
-              //'assets/disenio_uno/undraw_version_control_re_mg66.png',
-              //fit: BoxFit.fitHeight,
-              //height: 400,
-            ),
+            child: esInternet
+                ? Image.network(slide.imagen)
+                : Image.asset(
+                    slide.imagen,
+                    //'assets/disenio_uno/undraw_version_control_re_mg66.png',
+                    //fit: BoxFit.fitHeight,
+                    //height: 400,
+                  ),
           ),
         ),
         Center(

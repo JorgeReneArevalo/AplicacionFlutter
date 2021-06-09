@@ -7,6 +7,28 @@ import 'package:disenios_app/ui/widgets/slide_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+// class DisenioUnoPage extends StatefulWidget {
+//   DisenioUnoPage({Key? key}) : super(key: key);
+
+//   @override
+//   _DisenioUnoPageState createState() => _DisenioUnoPageState();
+// }
+
+// class _DisenioUnoPageState extends State<DisenioUnoPage> {
+//   //final controlador = PageController();
+//   //int currentPage = 0;
+//   //late int currentPage;
+
+//   @override
+//   void initState() {
+//     // TODO: implement initState
+//     final sildeBloc = Provider.of<SlideBloc>(context, listen: false);
+//     sildeBloc.cargarSlides();
+//     super.initState();
+//     //currentPage = 0;
+//     //SlideService.getSlides();
+//   }
+
 class DisenioUnoPage extends StatefulWidget {
   DisenioUnoPage({Key? key}) : super(key: key);
 
@@ -15,21 +37,9 @@ class DisenioUnoPage extends StatefulWidget {
 }
 
 class _DisenioUnoPageState extends State<DisenioUnoPage> {
-  final controlador = PageController();
-  //int currentPage = 0;
-  //late int currentPage;
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    //currentPage = 0;
-    //SlideService.getSlides();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final sildeBloc = Provider.of<SlideBloc>(context);
+    final sildeBloc = Provider.of<SlideBloc>(context, listen: false);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.white,
@@ -39,7 +49,10 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20.0),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                print('');
+                Navigator.pushReplacementNamed(context, 'login');
+              },
               child: Text(
                 'Skip',
                 style: TextStyle(
@@ -52,13 +65,13 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
           ),
           Container(
             //height: 600,
-            height: size.height * 0.7,
+            height: size.height * 0.6,
             //color: Colors.blue,
             child: PageView.builder(
-              controller: controlador,
+              controller: sildeBloc.controlador,
               onPageChanged: (valor) {
                 sildeBloc.currentPage = valor;
-                setState(() {});
+                //setState(() {});
               },
               itemBuilder: (_, index) => SlideWidget(
                 slide: sildeBloc.slides[index],
@@ -72,13 +85,13 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           DotsWidget(
-            slides: sildeBloc.slides,
-            currentPage: sildeBloc.currentPage,
-          ),
+              //slides: sildeBloc.slides,
+              //currentPage: sildeBloc.currentPage,
+              ),
           sildeBloc.currentPage != sildeBloc.slides.length - 1
               ? FloatingActionButton(
                   onPressed: () {
-                    controlador.nextPage(
+                    sildeBloc.controlador.nextPage(
                         duration: Duration(milliseconds: 300),
                         curve: Curves.easeIn);
                   },
@@ -93,7 +106,10 @@ class _DisenioUnoPageState extends State<DisenioUnoPage> {
                       primary: DisenioUnoColores.colorUno,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50))),
-                  onPressed: () {},
+                  onPressed: () {
+                    print('ENTRO EN BOTON ElevatedButton');
+                    Navigator.pushReplacementNamed(context, 'login');
+                  },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 12,
